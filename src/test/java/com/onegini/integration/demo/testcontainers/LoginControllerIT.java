@@ -22,11 +22,12 @@ public class LoginControllerIT {
   private static final int SERVICE_SERVER_PORT = 8080;
 
   @ClassRule
-  public static GenericContainer DOCKER_COMPOSE_CONTAINER =
+  public static DockerComposeContainer DOCKER_COMPOSE_CONTAINER = new DockerComposeContainer(new File("src/test/resources/docker-service-demo.yml"))
+      .withExposedService("simple-service", SERVICE_SERVER_PORT, Wait.forListeningPort());
+
+  /*public static GenericContainer DOCKER_COMPOSE_CONTAINER =
       new GenericContainer("martaonegini/simple-service-demo:8")
-          .withExposedPorts(SERVICE_SERVER_PORT);
-//  public static DockerComposeContainer DOCKER_COMPOSE_CONTAINER = new DockerComposeContainer(new File("src/test/resources/docker-service-demo.yml"))
-//      .withExposedService("simple-service", SERVICE_SERVER_PORT, Wait.forListeningPort());
+          .withExposedPorts(SERVICE_SERVER_PORT);*/
 
   @Test
   public void testLogin() {
