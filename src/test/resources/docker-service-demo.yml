@@ -1,0 +1,7 @@
+version: '2.0'
+
+services:
+  simple-service:
+    image: martaonegini/simple-service-demo:8
+    ports:
+      - 8080:8080
