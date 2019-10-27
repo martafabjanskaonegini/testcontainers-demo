@@ -24,12 +24,12 @@ public class LoginControllerIT {
 
   private static final int SERVICE_SERVER_PORT = 8080;
 
-//  @ClassRule
-//  public static DockerComposeContainer DOCKER_COMPOSE_CONTAINER = new DockerComposeContainer(new File("src/test/resources/docker-service-demo.yml"))
-//      .withExposedService("simple-service", SERVICE_SERVER_PORT, Wait.forListeningPort());
+  @ClassRule
+  public static DockerComposeContainer DOCKER_COMPOSE_CONTAINER = new DockerComposeContainer(new File("src/test/resources/docker-service-demo.yml"))
+      .withExposedService("simple-service", SERVICE_SERVER_PORT, Wait.forListeningPort());
 
-  @Rule
-  public MariaDBContainer mariaDB = new MariaDBContainer();
+//  @Rule
+//  public MariaDBContainer mariaDB = new MariaDBContainer();
 
 
   @Test
