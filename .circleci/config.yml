@@ -34,4 +34,4 @@ jobs:
 #          command: docker pull martaonegini/simple-service-demo:8
 
       # package into a jar
-      - run: mvn clean verify
+      - run: mvn -X clean verify
