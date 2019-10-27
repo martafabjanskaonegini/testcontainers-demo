@@ -26,4 +26,4 @@ jobs:
           key: simple-service-demo-{{ checksum "pom.xml" }}
 
       # package into a jar
-      - run: mvn clean package
+      - run: mvn clean verify
