@@ -25,7 +25,12 @@ jobs:
             - ~/.m2
           key: testcontainers-demo-{{ checksum "pom.xml" }}
 
-      - run: docker pull martaonegini/simple-service-demo:8
+      - run:
+          name: Login to DockerHub
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run:
+          name: Pull docker image
+          command: docker pull martaonegini/simple-service-demo:8
 
       # package into a jar
       - run: mvn clean verify
