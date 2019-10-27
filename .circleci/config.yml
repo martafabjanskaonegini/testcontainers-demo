@@ -25,5 +25,7 @@ jobs:
             - ~/.m2
           key: testcontainers-demo-{{ checksum "pom.xml" }}
 
+      - run: docker pull martaonegini/simple-service-demo:8
+
       # package into a jar
       - run: mvn clean verify
