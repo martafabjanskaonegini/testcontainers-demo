@@ -10,6 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.DockerComposeContainer;
+import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
@@ -21,8 +22,11 @@ public class LoginControllerIT {
   private static final int SERVICE_SERVER_PORT = 8080;
 
   @ClassRule
-  public static DockerComposeContainer DOCKER_COMPOSE_CONTAINER = new DockerComposeContainer(new File("src/test/resources/docker-service-demo.yml"))
-      .withExposedService("simple-service", SERVICE_SERVER_PORT, Wait.forListeningPort());
+  public static GenericContainer DOCKER_COMPOSE_CONTAINER =
+      new GenericContainer("martaonegini/simple-service-demo:8")
+          .withExposedPorts(SERVICE_SERVER_PORT);
+//  public static DockerComposeContainer DOCKER_COMPOSE_CONTAINER = new DockerComposeContainer(new File("src/test/resources/docker-service-demo.yml"))
+//      .withExposedService("simple-service", SERVICE_SERVER_PORT, Wait.forListeningPort());
 
   @Test
   public void testLogin() {
