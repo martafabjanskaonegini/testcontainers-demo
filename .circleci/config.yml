@@ -5,7 +5,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/openjdk:11.0.1-jdk
 
-    working_directory: ~/simple-service-demo
+    working_directory: ~/testcontainers-demo
 
     environment:
       # Customize the JVM maximum heap limit
@@ -16,14 +16,14 @@ jobs:
 
       - restore_cache:
           keys:
-            - simple-service-demo-{{ checksum "pom.xml" }}
+            - testcontainers-demo-{{ checksum "pom.xml" }}
 
       - run: mvn dependency:go-offline
 
       - save_cache:
           paths:
             - ~/.m2
-          key: simple-service-demo-{{ checksum "pom.xml" }}
+          key: testcontainers-demo-{{ checksum "pom.xml" }}
 
       # package into a jar
       - run: mvn clean verify
