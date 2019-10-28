@@ -10,14 +10,14 @@
     <groupId>com.onegini.integration.demo</groupId>
     <artifactId>testcontainers</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>service-demo</name>
-    <description>Demo project for Spring Boot</description>
+    <name>testcontainers-demo</name>
+    <description>Demo project for Testcontainers framework to run integration tests</description>
 
     <properties>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <java.version>11</java.version>
-        <java.source.version>8</java.source.version>
-        <java.target.version>8</java.target.version>
+        <java.version>1.8</java.version>
+        <java.source.version>1.8</java.source.version>
+        <java.target.version>1.8</java.target.version>
     </properties>
     <dependencies>
       <dependency>
