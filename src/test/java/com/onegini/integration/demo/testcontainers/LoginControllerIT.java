@@ -28,25 +28,21 @@ public class LoginControllerIT {
   public static DockerComposeContainer DOCKER_COMPOSE_CONTAINER = new DockerComposeContainer(new File("src/test/resources/docker-service-demo.yml"))
       .withExposedService("simple-service", SERVICE_SERVER_PORT, Wait.forListeningPort());
 
-//  @Rule
-//  public MariaDBContainer mariaDB = new MariaDBContainer();
 
 
   @Test
   public void testLogin() {
+    DOCKER_COMPOSE_CONTAINER.start();
 
-    assertTrue(true);
-//    DOCKER_COMPOSE_CONTAINER.start();
-//
-//    given()
-//        .port(SERVICE_SERVER_PORT)
-//        .contentType(ContentType.JSON)
-//        .accept(ContentType.JSON)
-//        .body("{\"login\":\"marta\",\"password\":\"test\"}")
-//        .log().uri()
-//    .when()
-//        .post("login")
-//    .then()
-//        .body("welcome", Matchers.is("Welcome marta"));
+    given()
+        .port(SERVICE_SERVER_PORT)
+        .contentType(ContentType.JSON)
+        .accept(ContentType.JSON)
+        .body("{\"login\":\"marta\",\"password\":\"test\"}")
+        .log().uri()
+    .when()
+        .post("login")
+    .then()
+        .body("welcome", Matchers.is("Welcome marta"));
   }
 }
