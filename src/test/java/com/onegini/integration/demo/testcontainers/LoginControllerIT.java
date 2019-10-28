@@ -21,12 +21,13 @@ public class LoginControllerIT {
   public static DockerComposeContainer DOCKER_COMPOSE_CONTAINER = new DockerComposeContainer(new File("src/test/resources/docker-service-demo.yml"))
       .withExposedService("simple-service", SERVICE_SERVER_PORT, Wait.forListeningPort());
 
+  static {
+    DOCKER_COMPOSE_CONTAINER.start();
+  }
 
 
   @Test
   public void testLogin() {
-    DOCKER_COMPOSE_CONTAINER.start();
-
     given()
         .port(SERVICE_SERVER_PORT)
         .contentType(ContentType.JSON)
