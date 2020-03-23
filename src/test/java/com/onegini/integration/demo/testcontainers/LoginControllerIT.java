@@ -28,7 +28,6 @@ public class LoginControllerIT {
 
   @Test
   public void testLogin() {
-    int i = 0;
     given()
         .port(SERVICE_SERVER_PORT)
         .contentType(ContentType.JSON)
